@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import Home from "./pages/Home";
 import Resume from "./pages/Resume";
 import Portfolio from "./pages/Portfolio";
@@ -12,24 +12,46 @@ function App() {
     <Router>
       <div className="App">
         {/* Navigation Bar */}
-        <nav>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/resume">Resume</Link></li>
-            <li><Link to="/portfolio">Porfolio</Link></li>
-            <li><Link to="/photography">Photography</Link></li>
-            <li><Link to="/more">More</Link></li>
-          </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li>
+            <NavLink to="/" className={({ isActive }) => isActive ? "active-link" : ""}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/resume" className={({ isActive }) => isActive ? "active-link" : ""}>
+              Resume
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/portfolio" className={({ isActive }) => isActive ? "active-link" : ""}>
+              Portfolio
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/photography" className={({ isActive }) => isActive ? "active-link" : ""}>
+              Photography
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/more" className={({ isActive }) => isActive ? "active-link" : ""}>
+              More
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
 
         {/* Page Routing */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/photography" element={<Photography />} />
-          <Route path="/more" element={<More />} />
-        </Routes>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/photography" element={<Photography />} />
+            <Route path="/more" element={<More />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
